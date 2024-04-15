@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Tornado cash Governance takeover</title>
+  <meta name="description" content="My blog post - Here I write about smart contract security">
+
+  <!-- Social: Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@0xVijayReddy">
+  <meta name="twitter:title" content="Tornado cash Governance takeover">
+  <meta name="twitter:description" content="My blog post - Here I write about smart contract security">
+  
+  <meta property="twitter:image:src" content="http://localhost:4000/assets/img/opengraph.png">
+  
+
+  <!-- Social: Facebook / Open Graph -->
+  <meta property="og:url" content="http://localhost:4000/blog/2023/11/06/tornado-cash-goveranance-takeover.html">
+  <meta property="og:title" content="Tornado cash Governance takeover">
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/opengraph.png">
+  
+  <meta property="og:description" content="My blog post - Here I write about smart contract security">
+  <meta property="og:site_name" content="jekyll-theme-potato-hacker">
+
+  <!-- Social: Schema.org  -->
+  <meta itemprop="name" content="Tornado cash Governance takeover"/>
+  <meta itemprop="description" content="My blog post - Here I write about smart contract security">
+  <meta itemprop="image" content="http://localhost:4000/assets/img/opengraph.png"/>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/assets/img/icons/favicon.ico" type="image/x-icon" />
+
+  <!-- Android Lolipop Theme Color -->
+  <meta name="theme-color" content="#2a4d14">
+
+  <!-- Styles -->
+  <link rel="stylesheet" id="css-theme" href="/assets/css/main-dark.css">
+  <link rel="stylesheet" href="/assets/css/highlight/gruvbox.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+
+  <!-- Javascript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.min.js"></script>
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+</head>
+
+
+<body class="animated fadeIn">
+  <div class="container">
+    <div id="background-div">
+      <svg id="background-svg">
+        <lineargradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
+          <stop stop-opacity="0" class="bgColor2" offset="0%" />
+          <stop stop-opacity="0.5" class="bgColor2" offset="10%" />
+          <stop stop-opacity="0.5" class="bgColor1" offset="40%" />
+          <stop stop-opacity="0" class="bgColor1" offset="100%" />
+        </lineargradient>
+        <g id="bg-layer1"></g>
+        <g id="bg-layer2" class="hide"></g>
+        <g id="bg-layer3"></g>
+        <g id="bg-layer4"></g>
+      </svg>
+    </div>
+    <section class="header">
+      <header>
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-toggle collapsed navbar-icon" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1">
+              <i class="fa fa-bars fa-2x"></i>
+            </a>
+            <a class="navbar-brand navbar-icon" href="/">
+                <i class="fa fa-home fa-2x"></i>
+            </a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/">Home</a></li>
+              
+                <li><a href="/blog">Blog</a></li>
+              
+
+              
+              
+                <li class="nav-item"><a href="/items/about.html">About</a></li>
+              
+
+              <script>
+                // clean repeated dropdowns and add <li> to their positions
+                let done = [];
+                let elements = [];
+                $(".dropdown")
+                  //
+                  .each((index0 , value0) => {
+                    let dropdownClass = "."+$(value0)[0].classList[1];
+                    if (done.indexOf(dropdownClass) !== -1) return
+                    done.push(dropdownClass)
+                    let dropdownMain = $(dropdownClass)[0]
+                    let itemsList = $(dropdownClass+">ul>li").sort((a, b) => parseInt(b.getAttribute("priority") || -9999999) - parseInt(a.getAttribute("priority") || -9999999))
+                    $(dropdownClass+">ul>li").remove();
+                    $(dropdownClass+">ul").append(itemsList)
+                    $(dropdownClass).remove();
+                    elements.push(dropdownMain)
+                });
+                let priority = [ "About", ];
+                elements = elements.concat(...$(".nav-item").remove())
+                priority.map(text => {
+                  elements = elements.filter(node => {
+                      let nodeText = node.querySelector("a").textContent.trim()
+                      if (text == nodeText) {
+                          $(".nav").append(node)
+                          return false;
+                      }
+                      return true;
+                  })
+                });
+                $(".nav").append(elements)
+              </script>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    </section>
+    <section class="content">
+      <div class="row">
+        <!-- <div class="col-sm-2">
+          <div class="pane-separator hidden-xs" style="margin-bottom:30em;"></div>
+          <div class="left-pane">
+          </div>
+        </div> -->
+        <div class="col-sm-8 col-sm-offset-2 content-div">
+          <div class="page-separator hidden-xs">
+            <h1 class="h1-strip" style="padding-bottom:8em; margin-bottom: 0;"></h1>
+          </div>
+          <div class="page-separator visible-xs">
+            <h1 class="h1-strip" style="padding-bottom:2em; margin-bottom: 0;"></h1>
+          </div>
+          <h1 class="post-title page-title" id="title"><a href="#title">Tornado cash Governance takeover</a></h1>
+          <h4 class="post-title"> 2023-11-06 19:37:12 +0530 </h4>
+<article class="blog-post">
+  <p>On May 20 Tornado Cash Governance was hacked when an attacker was able to get the full control of governance. In this post I explained how the attacker tricked the community and took control of the Tornado cash goverance using a seemingly ordinary governance proposal.</p>
+
+<!--more-->
+
+<!-- <img class="img img-responsive" alt="pong-almost-from-scratch" height="600" width="500" style="display: block; margin: 0 auto;" src="https://academy-public.coinmarketcap.com/srd-optimized-uploads/475169d126aa45d18e22c680910f5560.jpeg"/> -->
+
+<p><br />
+<br /></p>
+
+<h2 id="tornado-cash---overview">Tornado Cash - Overview</h2>
+
+<p>Tornado Cash is a cryptocurrency smart contract mixer, facilitating users to deposit digital assets using one address and  withdraw them using another address, without any traceable link between the two addresses.</p>
+
+<p><br />
+Tornado Cash is governed by community using a Goveranace mechanism. Users can submit their proposals to the goveranace smart contracts and $TORN token holders can vote for approval or rejection of the proposal. The proposal must be submitted as a verified smart contract, and if approved by the community, the code in the proposal contract will be executed by governance contract via delegate-call.</p>
+
+<p><br />
+In this carefully crafted attack the attacker made a seemingly ordinary governance proposal, which was claimed to be the same as an earlier proposal that has been accepted by the governance. But the attacker included an <a href="https://twitter.com/samczsun/status/1660012960176279552/photo/2"><code class="language-plaintext highlighter-rouge">emergencyStop</code></a> function in the proposal contract which allowed them to selfdestruct the contract.  Upon passing the vote , the attacker took advantage of the selfdestruct to replace the existing proposal contract and deploy a new malicious one at the same address.</p>
+
+<p><br />
+In this post, we’ll delve into how the attacker leveraged the newly introduced selfdestruct function to replace the original proposal logic with malicious code. The attacker used a trick of combining CREATE/CREATE2 with selfdestructable proposal contract to create a contract with the same address but with different bytecode.
+<br />
+Before diving into the technical aspects of the attack, let’s first understand how CREATE/CREATE2 works.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<h3 id="create">CREATE</h3>
+
+<p><code class="language-plaintext highlighter-rouge">CREATE</code> is used to deploy a smart contract where the address of the deployed contract will be depend on the sender and the nonce of the sender.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>new_address = hash(sender, nonce)
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sender</code></td>
+      <td>The sender’s own address</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nonce</code></td>
+      <td>Every account has an associated nonce: for regular accounts it is increased on every transaction, while for       contract accounts it is increased on every contract creation</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This means it is possible to predict the address where the next created contract will be deployed, but only if no other transactions happen before then.</p>
+
+<p><br />
+<br /></p>
+
+<h3 id="create2">CREATE2</h3>
+
+<p>The whole idea behind <code class="language-plaintext highlighter-rouge">CREATE2</code> opcode is to make the resulting address independent of nonce. Regardless of the nonce of an account, it will always be possible to deploy the contract at the precomputed address.</p>
+
+<p><code class="language-plaintext highlighter-rouge">CREATE2</code> calculate the address of the deployed contract as below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>new_address = hash(0xFF, sender, salt, bytecode)
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">0xFF</code></td>
+      <td>a constant that prevents collisions with CREATE</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sender</code></td>
+      <td>The sender’s own address</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">salt</code></td>
+      <td>A salt (an arbitrary value provided by the sender)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">bytecode</code></td>
+      <td>creation code of the contract to be deployed</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">CREATE2</code> guarantees that if a sender ever deploys a smart contract using a particular bytecode and salt the <code class="language-plaintext highlighter-rouge">new_address</code> will always be deterministic regardless of the nonce of the account.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="the-attack">The Attack</h2>
+
+<p>Now that we understand how CREATE and CREATE2 works let’s see how the attacker was able to update the original proposal logic with malicious code. In other words how the attacker was able to deploy a new contract in place of the old one under the same address.</p>
+
+<ol start="0">
+  <li>
+    <p>First the attacker deployed a contract let’s call it  <code class="language-plaintext highlighter-rouge">Deployer Factory</code>.
+ <br /></p>
+  </li>
+  <li>
+    <p>Then created a new contract called the <code class="language-plaintext highlighter-rouge">Deployer</code> contract from <code class="language-plaintext highlighter-rouge">Deployer Factory</code> using CREATE2.
+ <br /></p>
+  </li>
+  <li>
+    <p>Then created the Proposal contract from Deployer using CREATE opcode. While the code purportedly used the same logic as a previous proposal, the attacker had added an extra function called <code class="language-plaintext highlighter-rouge">emergencyStop</code> which allowed them to selfDestruct the contract. The attacker used the name <code class="language-plaintext highlighter-rouge">emergencyStop</code> to hide the intent.</p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<p><img src="/assets/img/ta1.png" alt="How can the attacker deploy different contracts at the same address" /></p>
+<p style="text-align: center;"><em>source: <a href="https://youtu.be/whjRc4H-rAc">https://youtu.be/whjRc4H-rAc</a></em></p>
+
+<p>At this point the attacker waited for the proposal to be voted. Upon passing the vote , the attacker took advantage of the selfdestruct to replace the existing proposal contract and deploy a new malicious one at the same address. And then executed the proposal with malicious code.</p>
+
+<p><img src="/assets/img/tornado1.png" alt="How can the attacker deploy different contracts at the same address" /></p>
+<p style="text-align: center;"><em>source: <a href="https://youtu.be/whjRc4H-rAc">https://youtu.be/whjRc4H-rAc</a></em></p>
+<p><br /></p>
+
+<p>If the attacker deploys a new malicious proposal contract from <code class="language-plaintext highlighter-rouge">Deployer</code> using CREATE at this point they would’ve get a different address for the proposal contract because the nonce of <code class="language-plaintext highlighter-rouge">Deployer</code> is now different.</p>
+
+<p><br /></p>
+
+<p><img src="/assets/img/ta2.png" alt="How can the attacker deploy different contracts at the same address" /></p>
+<p style="text-align: center;"><em>source: <a href="https://youtu.be/whjRc4H-rAc">https://youtu.be/whjRc4H-rAc</a></em></p>
+
+<p><br />
+<br /></p>
+
+<p>So the attacker was somehow able to reset the nonce of the <code class="language-plaintext highlighter-rouge">Deployer</code> contract to deploy the malicious code at the same address as the original proposal code. Let’s see how they did it.</p>
+
+<p><br /></p>
+
+<ol start="3">
+  <li>
+    <p>First the attacker destructed the orginal proposal contract using <code class="language-plaintext highlighter-rouge">emergencyStop</code> funtion.
+ <br />
+ <br /></p>
+  </li>
+  <li>
+    <p>Then destroyed the <code class="language-plaintext highlighter-rouge">Deployer</code> contract which resets the nonce of the <code class="language-plaintext highlighter-rouge">Deployer</code> to zero.
+ <br /></p>
+
+    <p><img src="/assets/img/ta5.png" alt="How can the attacker deploy different contracts at the same address" /></p>
+    <p style="text-align: center;"><em>source: <a href="https://youtu.be/whjRc4H-rAc">https://youtu.be/whjRc4H-rAc</a></em></p>
+  </li>
+  <li>
+    <p>Then deployed the <code class="language-plaintext highlighter-rouge">Deployer</code> again. As CREATE2 is used the Deployer get the same address again (<code class="language-plaintext highlighter-rouge">0xFFF</code>).</p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p>Now the attacker deployed malicious proposal contract using CREATE again. As the sender(0xFFF) and nonce(0) are same the malicious proposal contract get the same address(<code class="language-plaintext highlighter-rouge">0xABC</code>) as original proposal contract.</p>
+
+    <p><br /></p>
+
+    <p><img src="/assets/img/ta7.png" alt="How can the attacker deploy different contracts at the same address" /></p>
+    <p style="text-align: center;"><em>source: <a href="https://youtu.be/whjRc4H-rAc">https://youtu.be/whjRc4H-rAc</a></em></p>
+  </li>
+</ol>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>Finally what should we do to prevent these kinda goveranace attacks in future:</p>
+<blockquote>
+  <p>“Be careful what you vote for! While we all know that proposal descriptions can lie, proposal logic can lie too! If you’re depending on the verified source code to stay the same, make sure the contract doesn’t have the ability to selfdestruct ”<br />
+   — <cite><a href="https://twitter.com/samczsun">Samczcun</a></cite></p>
+</blockquote>
+
+<p><br /></p>
+
+<p>Happy Hunting!</p>
+
+</article>
+
+        </div>
+        <div class="col-sm-2">
+          <div class="pane-separator hidden-xs" style="margin-bottom:30em;"></div>
+          <div class="pane-separator visible-xs" style="margin-bottom:5em;"></div>
+          <div class="right-pane" style="margin-left: 1em;">
+            
+              <div class="avatar">
+                <center>
+                  
+                    <img src="/assets/img/gitcat.jpg" alt="me" class="avatar-image">
+                  
+                  
+                    <p class="avatar-description">I'm Vijay . I enjoy breaking things</p>
+                  
+                  <div class="right-links">
+                    
+<a href="https://github.com/0xvj" target="_blank">
+  <i class="fa fa-github fa-3x"></i>
+</a>
+
+
+<a href="mailto:0xvj.alpha@gmail.com">
+  <i class="fa fa-envelope fa-3x"></i>
+</a>
+
+
+
+<a href="https://twitter.com/0xVijayReddy" target="_blank">
+  <i class="fa fa-twitter fa-3x"></i>
+</a>
+
+
+<a href="https://www.linkedin.com/in/0xvj" target="_blank">
+  <i class="fa fa-linkedin fa-3x"></i>
+</a>
+
+
+                  </div>
+                </center>
+              </div>
+            
+            
+              <div class="posts-list">
+                <a href="/blog">
+                  <h4>Recent Posts:</h4>
+                </a>
+                <ul>
+                  
+                </ul>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="footer">
+      <footer class="page-footer">
+  <center>
+    
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <a onclick="toggleTheme();">
+          Light/Dark
+        </a>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        
+<a href="https://github.com/0xvj" target="_blank">
+  <i class="fa fa-github fa-3x"></i>
+</a>
+
+
+<a href="mailto:0xvj.alpha@gmail.com">
+  <i class="fa fa-envelope fa-3x"></i>
+</a>
+
+
+
+<a href="https://twitter.com/0xVijayReddy" target="_blank">
+  <i class="fa fa-twitter fa-3x"></i>
+</a>
+
+
+<a href="https://www.linkedin.com/in/0xvj" target="_blank">
+  <i class="fa fa-linkedin fa-3x"></i>
+</a>
+
+
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        Copyright (c) 2024 0xvj -
+        <a href="mailto:0xvj.alpha@gmail.com">&lt;0xvj.alpha@gmail.com&gt;</a>
+      </div>
+    </div>
+    
+  </center>
+</footer>
+
+    </section>
+  </div>
+</body>
+
+</html>
