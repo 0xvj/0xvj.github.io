@@ -14,14 +14,14 @@
   <meta name="twitter:title" content="Read-Only Reentrancy Attacks">
   <meta name="twitter:description" content="A blog post explaining about read-only reentracny attacks in smart contracts.">
   
-  <meta property="twitter:image:src" content="http://localhost:4000/assets/img/opengraph.png">
+  <meta property="twitter:image:src" content="/assets/img/opengraph.png">
   
 
   <!-- Social: Facebook / Open Graph -->
-  <meta property="og:url" content="http://localhost:4000/blog/2022/08/27/Read-Only-Reentrancy.html">
+  <meta property="og:url" content="/blog/2023/11/06/read-only-reentrancy.html">
   <meta property="og:title" content="Read-Only Reentrancy Attacks">
   
-  <meta property="og:image" content="http://localhost:4000/assets/img/opengraph.png">
+  <meta property="og:image" content="/assets/img/opengraph.png">
   
   <meta property="og:description" content="A blog post explaining about read-only reentracny attacks in smart contracts.">
   <meta property="og:site_name" content="jekyll-theme-potato-hacker">
@@ -29,7 +29,7 @@
   <!-- Social: Schema.org  -->
   <meta itemprop="name" content="Read-Only Reentrancy Attacks"/>
   <meta itemprop="description" content="A blog post explaining about read-only reentracny attacks in smart contracts.">
-  <meta itemprop="image" content="http://localhost:4000/assets/img/opengraph.png"/>
+  <meta itemprop="image" content="/assets/img/opengraph.png"/>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="/assets/img/icons/favicon.ico" type="image/x-icon" />
@@ -151,10 +151,18 @@
             <h1 class="h1-strip" style="padding-bottom:2em; margin-bottom: 0;"></h1>
           </div>
           <h1 class="post-title page-title" id="title"><a href="#title">Read-Only Reentrancy Attacks</a></h1>
-          <h4 class="post-title"> 2022-08-27 00:00:00 +0530 </h4>
+          <h4 class="post-title"> 2023-11-06 17:03:02 +0530 </h4>
 <article class="blog-post">
-  <p>In this blog I explained about the popular Read-only reentrancy attacks.
+  <p>In this blog post I explained about the popular Read-only Reentrancy attacks.
 <!--more--></p>
+
+<p><br /></p>
+
+<p>In January, Jarvis Network Protocol was exploited by using a read-only reentrancy issue in the Curve Protocol. The attacker added a huge amount of liquidity to the Curve pool. And while removing it, he was able to trigger a callback to his malicious contract because one of the pool’s tokens is native MATIC, which triggers the fallback function in the attacker’s contract. As the <code class="language-plaintext highlighter-rouge">remove_liquidity()</code> function decreases the totalSupply and makes a callback to the attacker’s contract before updating the pool balances, the <code class="language-plaintext highlighter-rouge">get_virtual_price()</code> function of Curve returns an inflated price when invoked within the callback. Thus, when the attacker called the <code class="language-plaintext highlighter-rouge">borrow()</code> function of Jarvis Protocol within the callback, which relies on the <code class="language-plaintext highlighter-rouge">get_virtual_price()</code> function of the Curve protocol to price the LP tokens, he was able to borrow more assets than he should have due to the inflated LP token price.</p>
+
+<p><br /></p>
+
+<p>In July, Conic Finance ended up being exploited too, despite their efforts to prevent this exact attack: They had implemented a reentrancy check that was supposed to be automatically turned on when interacting with Curve pools that handled native ether. Their <code class="language-plaintext highlighter-rouge">_isETH()</code> method checked whether the pool was configured to manage a token of address <code class="language-plaintext highlighter-rouge">0xEee...eE</code>, which most Curve pools use to represent ETH. Unfortunately, this was not the case for the rETH/ETH pool that instead used the address of the WETH token to represent the ETH side. With the reentrancy protection bypassed, the same issue as explained above could be used to manipulate the price while removing liquidity from Curve and using this to steal funds from Conic.</p>
 
 </article>
 

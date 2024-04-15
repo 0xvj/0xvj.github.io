@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Tornado cash Governance takeover"
-date:   2023-11-06 12:07:12 -0200
+date:   2023-12-25 16:05:11 -0200
 categories: blog
 layout: post
 ---
